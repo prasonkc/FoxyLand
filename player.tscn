@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=3 uid="uid://bwoqbfj4noibv"]
+
+[ext_resource type="Script" uid="uid://duhhyd6idqnti" path="res://player.gd" id="1_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://dwof1ye5pirdq" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Spritesheet.png" id="2_nvl01"]
+[ext_resource type="Texture2D" uid="uid://che3k5yxq2gy1" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/jump/player-jump-1.png" id="3_ivps1"]
+[ext_resource type="Texture2D" uid="uid://3vakrftad0un" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/jump/player-jump-2.png" id="4_urp6f"]
+[ext_resource type="Texture2D" uid="uid://c8u0xx3lh1xkg" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-1.png" id="5_bwjto"]
+[ext_resource type="Texture2D" uid="uid://bsddol28xndh5" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-2.png" id="6_606se"]
+[ext_resource type="Texture2D" uid="uid://bdtqdtf5jg7ie" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-3.png" id="7_u1c27"]
+[ext_resource type="Texture2D" uid="uid://d4atenum00s35" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-4.png" id="8_op7ga"]
+[ext_resource type="Texture2D" uid="uid://bydof2iu7hv45" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-5.png" id="9_q13i1"]
+[ext_resource type="Texture2D" uid="uid://bketp8ru1yvpq" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Players/Foxy/Sprites/run/player-run-6.png" id="10_pylmc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbfsw"]
+radius = 16.0
+height = 54.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tmop"]
+atlas = ExtResource("2_nvl01")
+region = Rect2(0, 128, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ahtn"]
+atlas = ExtResource("2_nvl01")
+region = Rect2(33, 128, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmhl"]
+atlas = ExtResource("2_nvl01")
+region = Rect2(0, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("2_nvl01")
+region = Rect2(33, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("2_nvl01")
+region = Rect2(66, 0, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("2_nvl01")
+region = Rect2(99, 0, 33, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtqh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tmop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ahtn")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lmhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ivps1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_urp6f")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u1c27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_q13i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pylmc")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_n7ghd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(53, 69)
+shape = SubResource("CapsuleShape2D_pbfsw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(55, 60)
+scale = Vector2(1.62121, 1.9375)
+sprite_frames = SubResource("SpriteFrames_qtqh7")
+animation = &"Run"
