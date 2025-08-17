@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 			anim.play("Run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if velocity.y ==0:
+		if velocity.y == 0:
 			anim.play("Idle")
 	if velocity.y > 0:
 		anim.play("Fall")
