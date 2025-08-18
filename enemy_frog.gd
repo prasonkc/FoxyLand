@@ -50,7 +50,6 @@ func _on_player_collision_body_entered(body: Node2D) -> void:
 		death()
 
 func death():
-	Game.gold += 5
 	Utils.saveGame()
 	velocity.x = 0
 	chase = false
