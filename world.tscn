@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn14dq1hm7m85"]
+[gd_scene load_steps=13 format=3 uid="uid://dn14dq1hm7m85"]
 
 [ext_resource type="Texture2D" uid="uid://bqgmbog5urra0" path="res://sunny-land-phaser-project/sunny-land/assets/environment/tileset.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bwoqbfj4noibv" path="res://player.tscn" id="1_f3sb7"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dmg0cwminsu0x" path="res://enemy_frog.tscn" id="5_036b0"]
 [ext_resource type="Script" uid="uid://byryd741qnfj8" path="res://hp.gd" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://js3fuhh6mhhy" path="res://Collectibles/gem.tscn" id="6_gbfbk"]
+[ext_resource type="Script" uid="uid://cnenp6b2yqgcc" path="res://collectibles.gd" id="6_ioo17"]
 [ext_resource type="PackedScene" uid="uid://crh0knvv0qpyq" path="res://Collectibles/cherry.tscn" id="7_ioo17"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
@@ -253,12 +254,21 @@ position = Vector2(27, 293)
 position = Vector2(656, 404)
 
 [node name="Collectibles" type="Node" parent="."]
+script = ExtResource("6_ioo17")
 
 [node name="Gem" parent="Collectibles" instance=ExtResource("6_gbfbk")]
 position = Vector2(266, 438)
 
 [node name="Cherry" parent="Collectibles" instance=ExtResource("7_ioo17")]
 position = Vector2(814, 433)
+
+[node name="TimerCherry" type="Timer" parent="Collectibles"]
+wait_time = 30.0
+autostart = true
+
+[node name="TimerGem" type="Timer" parent="Collectibles"]
+wait_time = 9.852
+autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -285,3 +295,6 @@ offset_bottom = 39.32
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 script = SubResource("GDScript_dwbse")
+
+[connection signal="timeout" from="Collectibles/TimerCherry" to="Collectibles" method="_on_timer_timeout"]
+[connection signal="timeout" from="Collectibles/TimerGem" to="Collectibles" method="_on_timer_gem_timeout"]

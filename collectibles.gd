@@ -1,11 +1,21 @@
 extends Node
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var cherry = preload("res://Collectibles/cherry.tscn")
+var gem = preload("res://Collectibles/gem.tscn")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_timer_timeout() -> void:
+	var cherryTemp = cherry.instantiate()
+	var rng = RandomNumberGenerator.new()
+	var rand_int = rng.randi_range(100, 2250)
+	cherryTemp.position = Vector2(rand_int, 425)
+	add_child(cherryTemp)
+
+
+
+func _on_timer_gem_timeout() -> void:
+	var gemTemp = gem.instantiate()
+	var rng = RandomNumberGenerator.new()
+	var rand_int1 = rng.randi_range(100, 2250)
+	gemTemp.position = Vector2(rand_int1, 425)
+	add_child(gemTemp)
