@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn14dq1hm7m85"]
+[gd_scene load_steps=12 format=3 uid="uid://dn14dq1hm7m85"]
 
 [ext_resource type="Texture2D" uid="uid://bqgmbog5urra0" path="res://sunny-land-phaser-project/sunny-land/assets/environment/tileset.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bwoqbfj4noibv" path="res://player.tscn" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://djo6uuq1fcdh3" path="res://bg.gd" id="1_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://lf6ktif7tm7c" path="res://sunny-land-phaser-project/sunny-land/assets/environment/back.png" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dmg0cwminsu0x" path="res://enemy_frog.tscn" id="5_036b0"]
+[ext_resource type="Script" uid="uid://byryd741qnfj8" path="res://hp.gd" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://js3fuhh6mhhy" path="res://Collectibles/gem.tscn" id="6_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://crh0knvv0qpyq" path="res://Collectibles/cherry.tscn" id="7_ioo17"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("1_aqk2v")
@@ -205,6 +208,21 @@ texture = ExtResource("1_aqk2v")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_aqk2v")
 
+[sub_resource type="GDScript" id="GDScript_dwbse"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	var player = $\"../../Player/Player\"
+	text = \"Gold: \" + str(Game.gold)
+"
+
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -232,4 +250,38 @@ position = Vector2(27, 293)
 [node name="Mobs" type="Node" parent="."]
 
 [node name="Frog" parent="Mobs" instance=ExtResource("5_036b0")]
-position = Vector2(561, 435)
+position = Vector2(656, 404)
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Gem" parent="Collectibles" instance=ExtResource("6_gbfbk")]
+position = Vector2(266, 438)
+
+[node name="Cherry" parent="Collectibles" instance=ExtResource("7_ioo17")]
+position = Vector2(814, 433)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HP" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.035
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 14.68
+offset_bottom = 6.32
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+script = ExtResource("6_dwbse")
+
+[node name="Gold" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.035
+offset_left = 7.0
+offset_top = 40.0
+offset_right = 6.68
+offset_bottom = 39.32
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+script = SubResource("GDScript_dwbse")

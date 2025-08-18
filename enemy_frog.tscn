@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmg0cwminsu0x"]
+[gd_scene load_steps=22 format=3 uid="uid://dmg0cwminsu0x"]
 
 [ext_resource type="Script" uid="uid://bsxfhnphyltaf" path="res://enemy_frog.gd" id="1_cvqko"]
 [ext_resource type="Texture2D" uid="uid://o0416caugudf" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Characters/Enemies and NPC/frog/Spritesheets/frog-idle.png" id="1_xihbq"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cqhnsqbloiog7" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest/Forest Pack/PNG/sprites/misc/enemy-death/enemy-death-6.png" id="7_2v2mc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vsxd"]
-size = Vector2(21, 13)
+size = Vector2(8, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ryhit"]
 atlas = ExtResource("1_xihbq")
@@ -114,13 +114,16 @@ animations = [{
 radius = 80.2247
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvqko"]
-size = Vector2(15, 12.5)
+size = Vector2(16, 6.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w4xu"]
+size = Vector2(24, 5)
 
 [node name="Frog" type="CharacterBody2D"]
 script = ExtResource("1_cvqko")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 6.5)
+position = Vector2(-1, 9.5)
 shape = SubResource("RectangleShape2D_3vsxd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -138,9 +141,16 @@ shape = SubResource("CircleShape2D_quv74")
 [node name="PlayerDeath" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDeath"]
-position = Vector2(-0.5, 1)
+position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_cvqko")
+
+[node name="PlayerCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollision"]
+position = Vector2(-1, 10.5)
+shape = SubResource("RectangleShape2D_0w4xu")
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
 [connection signal="body_entered" from="PlayerDeath" to="." method="_on_player_death_body_entered"]
+[connection signal="body_entered" from="PlayerCollision" to="." method="_on_player_collision_body_entered"]
