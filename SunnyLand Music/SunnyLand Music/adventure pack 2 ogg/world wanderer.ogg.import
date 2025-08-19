@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/world wanderer.ogg-6b8da92b293d7ba6f623a5acfa
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

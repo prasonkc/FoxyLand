@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dn14dq1hm7m85"]
+[gd_scene load_steps=14 format=3 uid="uid://dn14dq1hm7m85"]
 
 [ext_resource type="Texture2D" uid="uid://bqgmbog5urra0" path="res://sunny-land-phaser-project/sunny-land/assets/environment/tileset.png" id="1_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bwoqbfj4noibv" path="res://player.tscn" id="1_f3sb7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://js3fuhh6mhhy" path="res://Collectibles/gem.tscn" id="6_gbfbk"]
 [ext_resource type="Script" uid="uid://cnenp6b2yqgcc" path="res://collectibles.gd" id="6_ioo17"]
 [ext_resource type="PackedScene" uid="uid://crh0knvv0qpyq" path="res://Collectibles/cherry.tscn" id="7_ioo17"]
+[ext_resource type="AudioStream" uid="uid://birgf4qtkn5t6" path="res://SunnyLand Music/SunnyLand Music/Adventure pack 1 ogg/arcade.ogg" id="10_wse8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
 texture = ExtResource("1_aqk2v")
@@ -295,6 +296,11 @@ offset_bottom = 39.32
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
 script = SubResource("GDScript_dwbse")
+
+[node name="BG Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_wse8f")
+volume_db = 8.83
+autoplay = true
 
 [connection signal="timeout" from="Collectibles/TimerCherry" to="Collectibles" method="_on_timer_timeout"]
 [connection signal="timeout" from="Collectibles/TimerGem" to="Collectibles" method="_on_timer_gem_timeout"]
