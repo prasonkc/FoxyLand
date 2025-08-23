@@ -254,6 +254,30 @@ position = Vector2(27, 293)
 [node name="Frog" parent="Mobs" instance=ExtResource("5_036b0")]
 position = Vector2(656, 404)
 
+[node name="Frog2" parent="Mobs" instance=ExtResource("5_036b0")]
+position = Vector2(372, 340)
+rotation = 0.299987
+
+[node name="Frog3" parent="Mobs" instance=ExtResource("5_036b0")]
+position = Vector2(572, 289)
+rotation = 0.299987
+
+[node name="Frog4" parent="Mobs" instance=ExtResource("5_036b0")]
+position = Vector2(201, 264)
+rotation = 0.299987
+
+[node name="Frog5" parent="Mobs" instance=ExtResource("5_036b0")]
+position = Vector2(366, 185)
+rotation = 0.299987
+
+[node name="Frog6" parent="Mobs" instance=ExtResource("5_036b0")]
+position = Vector2(509, 192)
+rotation = 3.31861
+
+[node name="Frog7" parent="Mobs" instance=ExtResource("5_036b0")]
+position = Vector2(199, 404)
+rotation = 3.31861
+
 [node name="Collectibles" type="Node" parent="."]
 script = ExtResource("6_ioo17")
 

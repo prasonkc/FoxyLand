@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ddguvni2u8grr" path="res://Sunny Land Collection Files/Sunny Land Collection Files/Assets/Environments/Forest/Forest Enemies Add On Pack/eagle/Sprites/fly/fly4.png" id="6_giups"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s4g5b"]
-size = Vector2(12, 24)
+size = Vector2(8, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ccwao"]
 animations = [{
@@ -52,18 +52,17 @@ size = Vector2(30.5, 16.5)
 script = ExtResource("1_3w8ke")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 5)
+position = Vector2(-2, 3.5)
 shape = SubResource("RectangleShape2D_s4g5b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ccwao")
 animation = &"fly"
-frame_progress = 0.52427
 
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-position = Vector2(7, 1)
+position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_mherw")
 
 [node name="PlayerDeath" type="Area2D" parent="."]
